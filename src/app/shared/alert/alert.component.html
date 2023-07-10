@@ -1,0 +1,22 @@
+<div class="mat-elevation-z4 confirmation alert">
+  <mat-toolbar>
+    <mat-toolbar-row class="toolbar-itinerarios">
+      <div class="col-md-auto">
+        <mat-icon fontSet="fas" fontIcon="fa-info-circle"></mat-icon>
+        {{dataDialog.title}}
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="message" [innerHTML]="dataDialog.message"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <button tabindex="-1" mat-raised-button color="warn" class="pl-4 pr-4" (click)="confirmar()">Aceptar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+// CUSTOM MODAL - CONFIRMATION
+.confirmation {
+  border-radius: 4px !important;
+  min-width: 350px;
+  max-width: 400px;
+}
+.alert {
+  min-width: 300px;
+  max-width: 350px;
+}
+.confirmation .mat-toolbar-row {
+  padding: 0;
+}
+.confirmation>mat-toolbar {
+  border-radius: 4px 4px 0 0;
+}
+.confirmation .row {
+  padding-bottom: 0;
+}
+.confirmation .message {
+  padding: 35px 30px;
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+.confirmation .row {
+  text-align: center;
+}
+.confirmation .row:last-child {
+  margin: 0;
+  padding: 0;
+}
+.confirmation .row:last-child>div {
+  padding: 0;
+  margin: 0;
+  width: 50%;
+}
+.confirmation .row:last-child div button {
+  width: 100%;
+  min-height: 55px;
+}
+.confirmation .row:last-child div:first-child button {
+  border-radius: 0 0 0 4px;
+}
+.confirmation .row:last-child div:last-child button {
+  border-radius: 0 0 4px;
+}
+.alert .row:last-child div button {
+  width: auto;
+  min-height: inherit;
+}
+.alert .row:last-child div:first-child button {
+  border-radius: 4px;
+}
+.confirmation mat-icon {
+  font-size: 2rem !important;
+  vertical-align: middle;
+  width: auto;
+  color: rgba(0, 0, 0, 0.12);
+}

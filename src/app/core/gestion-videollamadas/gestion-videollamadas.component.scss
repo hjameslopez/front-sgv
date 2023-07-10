@@ -1,0 +1,244 @@
+table {
+  width: 100%;
+}
+
+mat-datepicker-toggle {
+  display: inline-block;
+}
+
+.mat-column-sNombres {
+  flex: 0 0 30%;
+  text-align: left;
+  justify-content: left;
+  padding: 15px;
+}
+.mat-column-sNombres2 {
+  flex: 0 0 50%;
+  text-align: left;
+  justify-content: left;
+  padding: 15px;
+}
+.mat-column-tipoDoc {   
+  flex: 0 0 5%;
+  text-align: center;
+  justify-content: center;
+  padding: 8px;
+}
+.mat-column-numDoc {
+  flex: 0 0 8%;
+  text-align: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.mat-column-nEdad {
+  flex: 0 0 10%;
+  text-align: center;
+  justify-content: center;
+  padding: 8px;
+}
+.mat-column-nEdad2 {
+  flex: 0 0 10%;
+  text-align: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.mat-column-sFecCreado {
+  flex: 0 0 15%;
+  text-align: left;
+  justify-content: left;
+  padding: 10px;
+}
+.mat-column-sFecCreado2 {
+  flex: 0 0 15%;
+  text-align: left;
+  justify-content: left;
+  padding: 10px;
+}
+.mat-column-nTurno {
+  flex: 0 0 10%;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+.mat-column-destino {
+  flex: 0 0 8%;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+.mat-column-nEstado {
+  flex: 0 0 15%;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+
+tr.detail-row {
+  height: 0;
+  background-color: #e0f2f7;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background-color: #b3dfec;
+  cursor: pointer;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background-color: #b3dfec;
+  cursor: pointer;
+}
+
+tr.expanded-row {
+  background-color: #b3dfec;
+  cursor: pointer;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+.element-description {
+  padding: 16px 0;
+  font-size: .7rem;
+  font-stretch: extra-expanded;
+  text-align: left;
+  text-transform: uppercase;
+  width: 100%;
+}
+.element-description ul li {
+  font-stretch: extra-expanded;
+  padding: 3px 0;
+}
+.element-description ul li span {
+  font-weight: 600;
+  font-stretch: condensed;
+}
+.element-description ul {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: wrap column;
+  flex-flow: wrap column;
+  max-height: 50%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.element-description h4 {
+  margin-top: 15px;
+  background-color: aliceblue;
+  padding: 10px;
+  text-align: center;
+}
+.element-data {
+  border-bottom: 1px solid #b3dfec;
+  color: #0081b1;
+  padding: 10px 0;
+  font-size: 0.65rem;
+}
+.element-data span {
+  color: #333;
+  display: block;
+  font-size: 0.75rem;
+}
+.data-row {
+  color: #0081b1;
+  padding: 3px 0;
+  font-size: 0.65rem;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+.clean-button {
+  color: #ff5252;
+  font-size: 1.5rem;
+}
+.date-button {
+  font-size: .8rem;
+}
+
+.paint-row td.mat-cell {
+  color: #4b5201 !important;
+}
+
+.aprobado {
+  background-color: #b0dc39;
+  color: black;
+}
+.desaprobado {
+  background-color: #ff5252;
+  color: white;
+}
+.mat-standard-chip {
+  padding: 5px 8px;
+  min-height: 24px;
+}
+.mat-chip {
+  font-size: 12px;
+}
+
+mat-card legend {
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.highlightTableColor{
+  background-color: greenyellow;
+}
+
+
+
+
+
+
+
+
+
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.titulo{
+  font-size: 50px;
+  font-weight: bolder;
+  color: white;
+  -webkit-text-stroke: 1px #050000;
+  position: absolute;
+  right: 300px;
+  width: 300px;
+  margin-right: 2em;
+  padding: 10px;
+}
+
+mat-drawer {
+background: #0094bf;
+width: 20%;
+}
+
+.logo{
+  margin: auto;
+
+}
+
+.mat-drawer-container {
+  position: inherit;
+}

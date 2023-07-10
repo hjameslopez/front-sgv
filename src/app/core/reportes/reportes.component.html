@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-12">
+    <mat-tab-group [color]="'primary'" [backgroundColor]="'accent'">
+      <mat-tab label="Exportar">
+          
+        <div class="content-tab">
+          <div class="row">
+            <div class="col-md-12 pb-3">
+              <mat-card class="mat-elevation-z12">
+                <mat-card-header>
+                  <mat-card-title>Listado</mat-card-title>
+                </mat-card-header> 
+                <mat-card-content>
+                  <form [formGroup]="form" class="mt-2">
+                    <div class="row">
+                            <div class="col-sm-12 col-md-3 col-xl-3 col-lg-3 pr-md-2 pr-lg-2 pr-xl-2">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Operador</mat-label>
+                                <mat-select formControlName="sOperador" required>
+                                  <mat-option *ngFor="let licencia of licencias" [value]="licencia.sCorreo">
+                                    {{licencia.sNombre | uppercase}}
+                                  </mat-option>
+                                </mat-select>
+                                
+                              </mat-form-field>
+                            </div>
+  
+  
+                            <div class="col-sm-12 col-md-3 col-xl-3 col-lg-3 pr-md-2 pr-lg-2 pr-xl-2">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Fecha Incial</mat-label>
+                                <input matInput [matDatepicker]="sFechaInicialVideollamadas" (focus)="sFechaInicialVideollamadas.open()" 
+                                placeholder="Fecha inicial" formControlName="sFechaInicialVideollamadas" required>
+                                <mat-datepicker-toggle matSuffix [for]="sFechaInicialVideollamadas"></mat-datepicker-toggle>
+                                
+                                <mat-datepicker #sFechaInicialVideollamadas></mat-datepicker>
+                                
+                              </mat-form-field>
+                            </div>
+    
+                          <div class="col-sm-12 col-md-3 col-xl-3 col-lg-3 pr-md-2 pr-lg-2 pr-xl-2 pl-md-2 pl-lg-2 pl-xl-2">
+                            <mat-form-field appearance="outline">
+                              <mat-label>Fecha Final</mat-label>
+                              <input matInput [matDatepicker]="sFechaFinalVideollamadas" (focus)="sFechaFinalVideollamadas.open()" placeholder="Fecha final"  
+                              formControlName="sFechaFinalVideollamadas" required>
+                              <mat-datepicker-toggle matSuffix [for]="sFechaFinalVideollamadas" ></mat-datepicker-toggle>
+                              
+                              <mat-datepicker #sFechaFinalVideollamadas></mat-datepicker>
+                              
+                            </mat-form-field>
+                          </div>
+    
+                          <div class="col-sm-12 col-md-3 col-xl-3 col-lg-3 pl-md-2 pl-lg-2 pl-xl-2 agregar theme-black">
+                            <button tabindex="-1" mat-raised-button class="mt-1 ml-3" color="primary" (click)="getColaTotal()">
+                              <mat-icon fontSet="fas" fontIcon="fa-search"></mat-icon> Buscar </button>
+                          </div>
+    
+                    </div>
+                  </form>
+
+                  <div class="table-container">
+                    <mat-table [dataSource]="dsVideollamadas" #sortVideollamadas="matSort" matSort class="mat-elevation-z2">
+
+                      <ng-container matColumnDef="sCodTicket">
+                        <mat-header-cell *matHeaderCellDef> # Ticket </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.sCodTicket }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="nEdad">
+                        <mat-header-cell *matHeaderCellDef> Edad </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.nEdad }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="sNombres">
+                        <mat-header-cell *matHeaderCellDef> Nombres y Apellidos </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.sNombres }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="sFecCreado">
+                        <mat-header-cell *matHeaderCellDef> Fecha y Hora </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.dFecCreadoAMPM }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="nEstado">
+                        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.nEstado }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="sOpeAsignado">
+                        <mat-header-cell *matHeaderCellDef> Operador </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.sOpeAsignado === null ? "---sin asignar---" : element.sOpeAsignado }} </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="dcVideollamadas" ></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: dcVideollamadas" [class.paint-row]="row.nIdSimVideCola" ></mat-row>  
+                      </mat-table>
+                    </div>
+
+                  <mat-paginator #paginatorVideollamadas pageSize="10" [length]="lengthVideollamadas" showFirstLastButtons ></mat-paginator>
+                </mat-card-content>
+                
+                <mat-card-actions class="d-flex justify-content-end">
+                  <button mat-raised-button color="warn" (click)="getReportVideollamadasXLSX()" > EXPORTAR XLSX </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>

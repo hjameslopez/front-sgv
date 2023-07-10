@@ -1,0 +1,45 @@
+// APP COLORS - MIGRACIONES PERÚ
+$migra-blue-dark: #00489A;
+$migra-blue-light: #0094BF;
+$migra-green-dark: #5B893E;
+$migra-green-light: #9BCC78;
+// APP COLORS - OPCIONALS
+$migra-blue-option-1: #78b2c3;
+// ANGULAR MATERIAL - MAIN THEME
+@import 'palettes'; // PALETAS DE COLORES DE MIGRACIONES (INSTITUCIONAL)
+@import '~@angular/material/theming';
+@include mat-core();
+
+//THEME MIGRACIONES
+$app-rim-primary: mat-palette($palette-migra-blue-dark);
+$app-rim-accent: mat-palette($palette-migra-blue-light);
+$app-rim-warning: mat-palette($mat-red, A200);
+$app-rim: mat-light-theme($app-rim-primary, $app-rim-accent, $app-rim-warning);
+@include angular-material-theme($app-rim);
+
+/* THEME GREEN (green dark, green light, red) */
+.theme-green {
+  $green-primary: mat-palette($palette-migra-green-dark, 500);
+  $green-accent:  mat-palette($palette-migra-green-light, 700);
+  $green-warning: mat-palette($mat-red, A200);
+  $app-rim-green: mat-light-theme($green-primary, $green-accent, $green-warning);
+  @include angular-material-theme($app-rim-green);
+}
+
+/* THEME BLACK (green dark, green light, red) */
+.theme-black {
+  $green-primary: mat-palette($palette-black, 500);
+  $green-accent:  mat-palette($palette-grey, 500);
+  $green-warning: mat-palette($mat-red, A200);
+  $app-black: mat-light-theme($green-primary, $green-accent, $green-warning);
+  @include angular-material-theme($app-black);
+}
+
+/* Theme status (primary = green, accent = orange, warn = red) */
+.theme-status {
+  $status-primary: mat-palette($palette-migra-green-light, 400);
+  $status-accent:  mat-palette($mat-orange, 300);
+  $status-warning: mat-palette($mat-red, A200);
+  $app-scm-status: mat-light-theme($status-primary, $status-accent, $status-warning);
+  @include angular-material-theme($app-scm-status);
+}

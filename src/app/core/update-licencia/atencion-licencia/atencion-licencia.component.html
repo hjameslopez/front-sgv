@@ -1,0 +1,58 @@
+<div id="dialogNuevo" fxLayout="column" class="dialog-content-wrapper" style="padding: 0px; max-height: 100vh;">
+    <mat-toolbar fxLayout="row" matDialogTitle class="mat-primary m-0" style="margin-bottom: 0px;">
+      <mat-toolbar-row  fxLayoutAlign="space-between center">
+        <span class="title dialog-title">{{ titulo }}</span>
+        <button mat-icon-button (click)="cerrar()" aria-label="Close dialog">
+          <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
+        </button>
+    </mat-toolbar-row>
+        
+      </mat-toolbar>
+      <mat-card>
+        <div class="col-md-auto">
+          <!--
+          <table class="table" *ngIf="operador">
+            <tr>
+              <th class="">N°:</th>
+              <td>{{ operador.nIdLicencia }}</td>
+            </tr>
+            <tr>
+              <th class="">Licencia:</th>
+              <td>{{ operador.sLicencia }}</td>
+            </tr>
+            <tr>
+              <th class="">Nombre:</th>
+              <td>{{ operador.sNombre }}</td>
+            </tr>
+          </table>
+          -->
+        <form [formGroup]="operador">
+
+          <mat-grid-list cols="1" rowHeight="80px">
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Login</mat-label>
+                <input matInput placeholder="Placeholder">
+                
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+          </mat-grid-list>
+        </form>
+            
+          
+        </div>
+  
+        <mat-card-actions class="d-flex justify-content-end mt-1">
+                    
+          <button mat-raised-button color="accent" (click)="actualizaLicencia()">ACTUALIZAR</button>
+          
+          
+        </mat-card-actions>
+      </mat-card>
+    
+  </div>

@@ -1,0 +1,50 @@
+
+<div id="dialogNuevo" fxLayout="column" class="dialog-content-wrapper" style="padding: 0px; max-height: 100vh;">
+  <mat-toolbar fxLayout="row" matDialogTitle class="mat-primary m-0" style="margin-bottom: 0px;">
+    <mat-toolbar-row  fxLayoutAlign="space-between center">
+      <span class="title dialog-title">{{ titulo }}</span>
+      <button *ngIf="botonTerminarLlamada==true" mat-icon-button (click)="validaCerrarRojo()" aria-label="Close dialog" style="background: brown">
+        <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
+      </button>
+
+      <button *ngIf="botonTerminarLlamada==false" mat-icon-button (click)="validaCerrar()" aria-label="Close dialog">
+        <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
+      </button>
+
+  </mat-toolbar-row>
+      
+    </mat-toolbar>
+    <mat-card>
+      <div class="col-md-auto">
+        
+        <table class="table" *ngIf="usuario">
+          <tr>
+            <th class="">Ticket:</th>
+            <td>{{ usuario.sCodTicket }}</td>
+          </tr>
+          <tr>
+            <th class="">Nombres:</th>
+            <td>{{ usuario.sNombres }}</td>
+          </tr>
+          <tr>
+            <th class="">Estado:</th>
+            <td>{{ usuario.nEstado }}</td>
+          </tr>
+          <tr>
+            <th class="">Tiempo:</th>
+            <td><countup-timer *ngIf="timer!=false" [countUpTimerConfig]="{ format: 'HH:mm:ss'| date:'mm:ss' }"></countup-timer></td>
+          </tr>
+        </table>
+
+      </div>
+
+      <mat-card-actions class="d-flex justify-content-end mt-1">
+                  
+        <button mat-raised-button color="accent" [disabled]="botonEstado===true" (click)="jalarLlamada()">JALAR LLAMADA</button>
+        <button mat-raised-button color="warn" [disabled]="botonTerminarLlamada===false" (click)="terminarLLamada()" >TERMINAR LLAMADA</button>
+        
+        
+      </mat-card-actions>
+    </mat-card>
+  
+</div>

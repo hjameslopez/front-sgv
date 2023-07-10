@@ -1,0 +1,183 @@
+<div class="row">
+    <div class="col-md-12">
+      
+      <mat-tab-group [color]="'primary'" [backgroundColor]="'accent'" (selectedTabChange)="CambiarTab(tabRef.selectedIndex)">
+        <mat-tab label="Licencias">
+          <div class="content-tab">
+            <div>
+              <!-- VIDEOLLAMADAS-->
+              <div class="row pb-3">
+                <div class="col-md-12">
+                  
+                  
+  
+                  <mat-card class="mat-elevation-z12">
+                    <mat-card-header>
+                      <mat-card-title>Gestión de Licencias</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <div class="table-container">
+                        <mat-table
+                          [dataSource]="dsLicencia"
+                          #sortLicencia="matSort"
+                          matSort
+                          class="mat-elevation-z2"
+                        >
+                          <ng-container matColumnDef="nIdLicencia">
+                            <mat-header-cell *matHeaderCellDef>
+                              N°
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              {{ element.nIdLicencia }}
+                            </mat-cell>
+                          </ng-container>
+  
+                          <ng-container matColumnDef="sLicencia">
+                            <mat-header-cell *matHeaderCellDef>
+                              Licencia
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              {{ element.sLicencia }}
+                            </mat-cell>
+                          </ng-container>
+  
+                          <ng-container matColumnDef="sNombre">
+                            <mat-header-cell *matHeaderCellDef>
+                              Operador Asignado
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              {{ element.sNombre }}
+                            </mat-cell>
+                          </ng-container>
+  
+                          <ng-container matColumnDef="acciones">
+                            <mat-header-cell *matHeaderCellDef>
+                              Acciones
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" matTooltip="Actualizar Licencia" >
+                                    <mat-icon fontSet="fas" [fontIcon]="'fa-arrow-alt-circle-right'"></mat-icon>
+                                  </button>
+                            </mat-cell>
+                          </ng-container>
+  
+                          <mat-header-row
+                            *matHeaderRowDef="dcLicencia"
+                          ></mat-header-row>
+                          <mat-row
+                            (click)="seleccionarLicencia(row)"
+                            [ngClass]="{
+                              highlightTableColor:
+                                selectedRowIndex === row.nIdLicencia
+                            }"
+                            *matRowDef="let row; columns: dcLicencia"
+                            [class.paint-row]="row.nIdSimVideCola"
+                          ></mat-row>
+                        </mat-table>
+                      </div>
+  
+                    
+                      <mat-paginator
+                        #paginatorLicencia
+                        pageSize="8"
+                        [length]="lengthLicencia"
+                        showFirstLastButtons
+                      ></mat-paginator>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Operadores">
+          <div class="content-tab">
+            <div>
+              <!-- VIDEOLLAMADAS-->
+              <div class="row pb-3">
+                <div class="col-md-12">
+                  
+                  
+  
+                  <mat-card class="mat-elevation-z12">
+                    <mat-card-header>
+                      <mat-card-title>Gestión de Operadores</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <div class="table-container">
+                        <mat-table
+                          [dataSource]="dsOperador"
+                          #sortOperador="matSort"
+                          matSort
+                          class="mat-elevation-z2"
+                        >
+                          <ng-container matColumnDef="nIdOperador">
+                            <mat-header-cell *matHeaderCellDef>
+                              N°
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              {{ element.nIdOperador }}
+                            </mat-cell>
+                          </ng-container>
+  
+                          <ng-container matColumnDef="sLogin">
+                            <mat-header-cell *matHeaderCellDef>
+                              Login
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              {{ element.sLogin }}
+                            </mat-cell>
+                          </ng-container>
+  
+                          <ng-container matColumnDef="sNombre">
+                            <mat-header-cell *matHeaderCellDef>
+                              Apellidos y Nombres
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              {{ element.sNombre }}
+                            </mat-cell>
+                          </ng-container>
+  
+                          <ng-container matColumnDef="acciones">
+                            <mat-header-cell *matHeaderCellDef>
+                              Acciones
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" matTooltip="Actualizar Operador" >
+                                    <mat-icon fontSet="fas" [fontIcon]="'fa-arrow-alt-circle-right'"></mat-icon>
+                                  </button>
+                            </mat-cell>
+                          </ng-container>
+  
+                          <mat-header-row
+                            *matHeaderRowDef="dcOperador"
+                          ></mat-header-row>
+                          <mat-row
+                            (click)="seleccionarOperador(row)"
+                            [ngClass]="{
+                              highlightTableColor:
+                                selectedRowIndex === row.nIdOperador
+                            }"
+                            *matRowDef="let row; columns: dcOperador"
+                            [class.paint-row]="row.nIdSimVideCola"
+                          ></mat-row>
+                        </mat-table>
+                      </div>
+  
+                    
+                      <mat-paginator
+                        #paginatorOperador
+                        pageSize="8"
+                        [length]="lengthOperador"
+                        showFirstLastButtons
+                      ></mat-paginator>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+</div>

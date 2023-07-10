@@ -1,0 +1,23 @@
+<div class="login">
+  <main>
+    <img src="" class="logo-videollamadas" alt="">
+    <!--
+      <img src="./assets/img/logo-sgv.png" class="logo-sgv" alt="Sistema de Gestión de Videollamadas">
+    -->
+    <div class="row d-flex align-items-center">
+      <div class="col-md-12 message pt-5 pl-5">
+        <div class="intro">
+          <h2>Bienvenido</h2>
+          <p>Coloque usuario y contraseña</p>
+          <button tabindex="-1" mat-raised-button color="accent" class="medium-button" (click)="openLogin()">Siguiente</button>
+        </div>
+      </div>
+    </div>
+    <img src="./assets/img/logo-migraciones.png" class="logo-migra" alt="Superintendencia Nacional de Migraciones">
+    <div class="row">
+      <div class="col-md-12 center footer">
+        <p>Copyright©2023<span *ngIf="currentYear>'2023'">-{{currentYear}}</span> Migraciones | Sistema de Gestión de Videollamadas - SGV</p>
+      </div>
+    </div>
+  </main>
+</div>

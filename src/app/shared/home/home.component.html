@@ -1,0 +1,25 @@
+<div class="row entryRight animated" [class.m-50]="mobile" [class.m-80]="!mobile">
+
+  
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2 pb-5 pb-lg-0 pb-xl-0 mx-auto center">
+    <a class="box center" (click)="configService.link('/gestion-videollamadas', environment.IDROL_SGV)">
+      <div class="icon center"><mat-icon fontSet="fas" fontIcon="fa-external-link-square-alt"></mat-icon></div>
+      <span>Atención de Videollamadas</span>
+    </a>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2 pb-5 pb-lg-0 pb-xl-0 mx-auto center">
+    <a class="box center" (click)="configService.link('/update-licencia', environment.IDROL_SGV)">
+      <div class="icon center"><mat-icon fontSet="fas" fontIcon="fa-users"></mat-icon></div>
+      <span>Licencias y Operadores</span>
+    </a>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2 pb-5 pb-lg-0 pb-xl-0 mx-auto center">
+    <a (click)="configService.link('/reportes', environment.IDROL_SGV)" class="box center">
+      <div class="icon center"><mat-icon fontSet="fas" fontIcon="fa-folder"></mat-icon></div>
+      <span>Reportes</span>
+    </a>
+  </div>
+
+</div>

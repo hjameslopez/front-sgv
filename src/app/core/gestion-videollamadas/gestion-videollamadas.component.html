@@ -1,0 +1,211 @@
+<div class="row">
+  <div class="col-md-12">
+    
+    <mat-tab-group #tabRef [color]="'primary'" [backgroundColor]="'accent'" (selectedTabChange)="CambiarTab(tabRef.selectedIndex)">
+      <mat-tab label="En Cola">
+        <div class="content-tab">
+          <div>
+            <!-- VIDEOLLAMADAS-->
+            <div class="row pb-3">
+              <div class="col-md-12">
+                <mat-card class="mat-elevation-z12">
+                  <mat-card-header>
+                    <mat-card-title>Listado de Ciudadanos en Cola</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="table-container">
+                      <mat-table
+                        [dataSource]="dsColaEstado2"
+                        #sortColaEstado2="matSort"
+                        matSort
+                        class="mat-elevation-z2"
+                      >
+                        <ng-container matColumnDef="sCodTicket2">
+                          <mat-header-cell *matHeaderCellDef>
+                            # Ticket
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.sCodTicket }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="nEdad2">
+                          <mat-header-cell *matHeaderCellDef>
+                            Edad
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.nEdad }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sNombres2">
+                          <mat-header-cell *matHeaderCellDef>
+                            Nombres y Apellidos
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.sNombres }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sFecCreado2">
+                          <mat-header-cell *matHeaderCellDef>
+                            Hora
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.dFecCreadoAMPM }}
+                          </mat-cell>
+                        </ng-container>
+
+                        
+
+                        <mat-header-row
+                          *matHeaderRowDef="dcColaEstado2"
+                        ></mat-header-row>
+                        <mat-row
+                          (click)="highlight(row)"
+                          [ngClass]="{
+                            highlightTableColor:
+                              selectedRowIndex === row.nIdSimVideCola
+                          }"
+                          *matRowDef="let row; columns: dcColaEstado2"
+                          [class.paint-row]="row.nIdSimVideCola"
+                        ></mat-row>
+                      </mat-table>
+                    </div>
+
+
+                    <mat-paginator
+                      #paginatorColaEstado2
+                      pageSize="10"
+                      [length]="lengthColaEstado2"
+                      showFirstLastButtons
+                    ></mat-paginator>
+                  </mat-card-content>
+                  <mat-card-actions class="d-flex justify-content-end">
+                    <button mat-raised-button color="warn" (click)="actualizarCola()" > ACTUALIZAR </button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+
+      <mat-tab label="Historial">
+        <div class="content-tab">
+          <div>
+            <!-- VIDEOLLAMADAS-->
+            <div class="row pb-3">
+              <div class="col-md-12">
+                <mat-card class="mat-elevation-z12">
+                  <mat-card-header>
+                    <mat-card-title>Listado de Turnos</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div  class="table-container">
+                      <div >
+                      <mat-table 
+
+                        [dataSource]="dsCola"
+                        #sortCola="matSort"
+                        matSort
+                        
+                        class="mat-elevation-z2"
+                      >
+                        <ng-container matColumnDef="sCodTicket">
+                          <mat-header-cell *matHeaderCellDef>
+                            # Ticket
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.sCodTicket }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="nEdad">
+                          <mat-header-cell *matHeaderCellDef>
+                            Edad
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.nEdad }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sNombres">
+                          <mat-header-cell *matHeaderCellDef>
+                            Nombres y Apellidos
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.sNombres }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sFecCreado">
+                          <mat-header-cell *matHeaderCellDef>
+                            Hora
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.dFecCreadoAMPM }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="nEstado">
+                          <mat-header-cell *matHeaderCellDef>
+                            Estado
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.nEstado }}
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sOpeAsignado">
+                          <mat-header-cell *matHeaderCellDef>
+                            Operador
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{
+                              element.sOpeAsignado === null
+                                ? "---sin asignar---"
+                                : element.sOpeAsignado
+                            }}
+                          </mat-cell>
+                        </ng-container>
+            
+                        <mat-header-row
+                          *matHeaderRowDef="dcCola"
+                        ></mat-header-row>
+                        <mat-row
+                          
+                          
+                          *matRowDef="let row; columns: dcCola"
+                          [class.paint-row]="row.nIdSimVideCola"
+                        ></mat-row>
+                      </mat-table>
+                    </div><!-- Requerimiento1234
+                    <div *ngIf="lengthCola===0">
+                      <label style="margin: 35px;">
+                        No se encuentran registros
+                      </label>
+                     
+                    </div>-->
+                    </div>
+                    <mat-paginator
+                      #paginatorCola
+                      pageSize="10"
+                      [length]="lengthCola"
+                      showFirstLastButtons
+                    ></mat-paginator>
+                  </mat-card-content>
+                  <mat-card-actions class="d-flex justify-content-end">
+                    <button mat-raised-button color="warn" (click)="actualizarHistorial()" > ACTUALIZAR </button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    
+    </mat-tab-group>
+  </div>
+</div>

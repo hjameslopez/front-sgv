@@ -1,0 +1,81 @@
+@-webkit-keyframes placeHolderShimmer{
+  0%{
+    background-position:-468px 0
+  }
+  100%{
+    background-position:468px 0
+  }
+}
+
+@keyframes placeHolderShimmer{
+  0%{
+    background-position:-468px 0
+  }
+  100%{
+    background-position:468px 0
+  }
+}
+
+.timeline-item {
+  background: white;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  border-radius: 3px;
+  padding: 12px;
+
+  margin: 0 auto;
+  max-width: 100%;
+  min-height: auto;
+}
+
+.animated-background {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+  animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  background: #eee;
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eee), color-stop(18%, #ddd), color-stop(33%, #eee));
+  background: -webkit-linear-gradient(left, #eee 8%, #ddd 18%, #eee 33%);
+  background: linear-gradient(to right,  #eee 8%,#ddd 18%,#eee 33%);
+  -webkit-background-size: 800px 104px;
+  background-size: 800px 104px;
+  height: 230px;
+  position: relative;
+}
+
+.mask {
+  background: white;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.columna {left: 100%; height: 100%;}
+
+.fila {background-color: inherit; position: absolute; width: 100%;}
+
+.fila-1 {top: 0; height: 15px;}
+.fila-spacing-1-before {top: 15px; height: 15px; width: 100%;}
+.fila-spacing-1-after {top: 31px; height: 15px; width: 100%;}
+
+.fila-2 {top: 46px; height: 15px;}
+.fila-spacing-2-before {top: 61px; height: 15px; width: 100%;}
+.fila-spacing-2-after {top: 77px; height: 15px; width: 100%;}
+
+.fila-3 {top: 92px; height: 15px;}
+.fila-spacing-3-before {top: 107px; height: 15px; width: 100%;}
+.fila-spacing-3-after {top: 123px; height: 15px; width: 100%;}
+
+.fila-4 {top: 138px; height: 15px;}
+.fila-spacing-4-before {top: 153px; height: 15px; width: 100%;}
+.fila-spacing-4-after {top: 169px; height: 15px; width: 100%;}
+
+.fila-5 {top: 184px; height: 15px;}
+.fila-spacing-5-before {top: 199px; height: 15px; width: 100%;}
+.fila-spacing-5-after {top: 215px; height: 15px; width: 100%;}

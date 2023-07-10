@@ -1,0 +1,43 @@
+<div class="login-modal">
+
+  <button tabindex="-1" mat-mini-fab color="default" (click)="cancelar()" class="login-button-close">
+    <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
+  </button>
+
+  <!-- auth-form -->
+  <form id="frmLogin" method="post" #frmLogin="ngForm">
+
+    <mat-progress-bar class="progress-bar" [color]="color" [mode]="loading ? 'indeterminate' : 'determinate'"></mat-progress-bar>
+
+    <mat-card class="login-card p-5">
+      <mat-card-content>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Nombre de usuario</mat-label>
+          <input name="inputUser" matInput type="text" placeholder="Ingrese su nombre de usuario" pattern="[^ ]+" required="" autofocus="" [(ngModel)]="username" #inputUser="ngModel" autocomplete="off">
+          <div *ngIf="inputUser.errors && (inputUser.dirty || inputUser.touched)" class="mensaje-error">
+            <!--            <div [hidden]="!inputUser.errors.required">{{'input_requerido'|translate}}</div>-->
+            <!--            <div [hidden]="!inputUser.errors.pattern">{{'input_invalido'|translate}}</div>-->
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input name="inputPassword" matInput [type]="hide ? 'password' : 'text'" placeholder="Ingrese su contraseña" pattern="[^ ]+" required="" [(ngModel)]="password" #inputPassword="ngModel" autocomplete="off">
+          <mat-icon fontSet="fas" [fontIcon]="hide ? 'fa-eye-slash' : 'fa-eye'" matSuffix (click)="hide = !hide"></mat-icon>
+          <div *ngIf="inputPassword.errors && (inputPassword.dirty || inputPassword.touched)" class="mensaje-error">
+            <!--            <div [hidden]="!inputPassword.errors.required">{{'input_requerido'|translate}}</div>-->
+            <!--            <div [hidden]="!inputPassword.errors.pattern">{{'input_invalido'|translate}}</div>-->
+          </div>
+        </mat-form-field>
+
+        <div class="theme-green">
+          <button mat-raised-button color="accent" class="full-width p-2" [class.not-allowed]="isDisabled" (click)="doAutenticar()" [disabled]="!frmLogin.form.valid || isDisabled">Ingresar</button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </form>
+  <!-- /.auth-form -->
+
+</div>
