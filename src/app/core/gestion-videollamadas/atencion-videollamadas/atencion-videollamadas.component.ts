@@ -11,7 +11,7 @@ import { NgxTimerModule, CountupTimerService } from 'ngx-timer';
   styleUrls: ["./atencion-videollamadas.component.scss"]
 })
 export class AtencionVideollamadasComponent implements OnInit {
-      
+
       titulo: any;
       usuario: any;
       obj: ResponseColaWebexDto;
@@ -23,7 +23,7 @@ export class AtencionVideollamadasComponent implements OnInit {
       estado:any=0;
       dFecLlamada:any=null;
       licenciaSession = null;
-  
+
 
   constructor(
     private webexService: WebexService,
@@ -35,7 +35,7 @@ export class AtencionVideollamadasComponent implements OnInit {
     { }
 
   ngOnInit() {
-    
+
     this.titulo = this.data.title;
     this.usuario = this.data.usuario;
     this.obj = this.data.usuario;
@@ -43,9 +43,9 @@ export class AtencionVideollamadasComponent implements OnInit {
     if(sessionStorage.getItem('licencia')!=null){
       this.licenciaSession = sessionStorage.getItem('licencia');
     }
-    
+
     }
-  
+
 
   //Inicio
   cerrar() {
@@ -55,13 +55,13 @@ export class AtencionVideollamadasComponent implements OnInit {
     this.countupTimerService.stopTimer();
     this.dialog.close(false);
   }
-  
+
   jalarLlamada() {
     this.botonEstado=true;
     this.estado=0;
     setTimeout(() => {
       this.cerrar_30Seg();
-      
+
     }, 40000);
       setTimeout(() => {
       //this.cerrarAutomatico();
@@ -79,7 +79,7 @@ export class AtencionVideollamadasComponent implements OnInit {
             .subscribe((response) => {
               this.listaAtencionTicket = response.lista;
               console.log("lista-----------------"+ this.listaAtencionTicket)
-              
+
             });*/
             setTimeout(() => {
               this.validaOperador();
@@ -93,7 +93,7 @@ export class AtencionVideollamadasComponent implements OnInit {
           console.log(error);
     }
     );
-    
+
   }
   validaOperador(){
     this.webexService.getValidaOperador(this.obj.nIdSimVideCola).subscribe(
@@ -115,18 +115,17 @@ export class AtencionVideollamadasComponent implements OnInit {
       }
     );
   }
-  
+
+
   validaCerrarRojo(){
     this.webexService.getValidaCerrar(this.obj.nIdSimVideCola).subscribe(
       (response) => {
-       
         if(response.opeOk==333){
           this.configService.alert(response.mensaje, 'bottom', 'center');
         }else{
           this.configService.alert("Cerrar OK", 'bottom', 'center');
           this.cerrar();
         }
-
       },
       (error) => {
         console.log(error);
@@ -168,7 +167,7 @@ export class AtencionVideollamadasComponent implements OnInit {
   }
 
   terminarLLamada() {
-    
+
     this.webexService.getValidaCerrar(this.obj.nIdSimVideCola).subscribe(
       (ele) => {
         if(ele.opeOk==222){
@@ -187,20 +186,20 @@ export class AtencionVideollamadasComponent implements OnInit {
     }
 
   updateFinLlamada(){
-  
+
     console.log(this.obj)
     this.webexService.updateTerminarLlamada(this.obj).subscribe(
       (response) => {
-        
+
         if(response.lista!=null){
           console.log(response.mensaje);
-          
+
           this.configService.alert(response.mensaje, 'bottom', 'center');
           this.cerrar();
-          
+
         }else{
           console.log(response.mensaje);
-          
+
           this.configService.alert("La llamada NO ha conluido...", 'bottom', 'center');
         }
 

@@ -1,0 +1,45 @@
+<div id="dialogNuevo" fxLayout="column" class="dialog-content-wrapper" style="padding: 0px; max-height: 100vh;">
+  <mat-toolbar fxLayout="row" matDialogTitle class="mat-primary m-0" style="margin-bottom: 0px;">
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+      <span class="title dialog-title">{{titulo}}</span>
+      <button mat-icon-button (click)="cerrar()" aria-label="Close dialog">
+        <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
+      </button>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+  <mat-card>
+
+    <form [formGroup]="form">
+
+      <div fxLayout="row" >
+        <div style="width: 100% !important;" fxLayout="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="sLogin" class="text-uppercase" placeholder="Ingrese un usuario" minlength="1" maxlength="13" autocomplete="off" [readonly]="mostrarNombre">
+            <mat-error *ngIf="form.get('sLogin').hasError('required')">Usuario requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" *ngIf="!mostrarNombre">
+          <button (click)="validarNuevoOperador()" mat-raised-button [disabled]="false" color="accent" class="boton" style="margin-top: 1em; margin-left: 1em;">
+            Validar
+          </button>
+        </div>
+      </div>
+
+      <div fxLayout="row" *ngIf="mostrarNombre">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="sNombre" class="text-uppercase" minlength="1" readonly>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" *ngIf="mostrarNombre">
+          <button (click)="registrar()" mat-raised-button  color="accent" class="boton">
+            Registrar
+          </button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

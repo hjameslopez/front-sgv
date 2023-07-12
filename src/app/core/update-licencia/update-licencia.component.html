@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-md-12">
-      
-      <mat-tab-group [color]="'primary'" [backgroundColor]="'accent'" (selectedTabChange)="CambiarTab(tabRef.selectedIndex)">
+
+      <mat-tab-group [color]="'primary'" [backgroundColor]="'accent'" (selectedTabChange)="CambiarTab(tabRef?.selectedIndex)">
         <mat-tab label="Licencias">
           <div class="content-tab">
             <div>
               <!-- VIDEOLLAMADAS-->
               <div class="row pb-3">
                 <div class="col-md-12">
-                  
-                  
-  
+
+
+
                   <mat-card class="mat-elevation-z12">
                     <mat-card-header>
                       <mat-card-title>Gestión de Licencias</mat-card-title>
@@ -31,7 +31,7 @@
                               {{ element.nIdLicencia }}
                             </mat-cell>
                           </ng-container>
-  
+
                           <ng-container matColumnDef="sLicencia">
                             <mat-header-cell *matHeaderCellDef>
                               Licencia
@@ -40,7 +40,7 @@
                               {{ element.sLicencia }}
                             </mat-cell>
                           </ng-container>
-  
+
                           <ng-container matColumnDef="sNombre">
                             <mat-header-cell *matHeaderCellDef>
                               Operador Asignado
@@ -49,7 +49,7 @@
                               {{ element.sNombre }}
                             </mat-cell>
                           </ng-container>
-  
+
                           <ng-container matColumnDef="acciones">
                             <mat-header-cell *matHeaderCellDef>
                               Acciones
@@ -60,7 +60,7 @@
                                   </button>
                             </mat-cell>
                           </ng-container>
-  
+
                           <mat-header-row
                             *matHeaderRowDef="dcLicencia"
                           ></mat-header-row>
@@ -75,8 +75,8 @@
                           ></mat-row>
                         </mat-table>
                       </div>
-  
-                    
+
+
                       <mat-paginator
                         #paginatorLicencia
                         pageSize="8"
@@ -96,9 +96,9 @@
               <!-- VIDEOLLAMADAS-->
               <div class="row pb-3">
                 <div class="col-md-12">
-                  
-                  
-  
+
+
+
                   <mat-card class="mat-elevation-z12">
                     <mat-card-header>
                       <mat-card-title>Gestión de Operadores</mat-card-title>
@@ -119,7 +119,7 @@
                               {{ element.nIdOperador }}
                             </mat-cell>
                           </ng-container>
-  
+
                           <ng-container matColumnDef="sLogin">
                             <mat-header-cell *matHeaderCellDef>
                               Login
@@ -128,7 +128,7 @@
                               {{ element.sLogin }}
                             </mat-cell>
                           </ng-container>
-  
+
                           <ng-container matColumnDef="sNombre">
                             <mat-header-cell *matHeaderCellDef>
                               Apellidos y Nombres
@@ -137,18 +137,18 @@
                               {{ element.sNombre }}
                             </mat-cell>
                           </ng-container>
-  
+
                           <ng-container matColumnDef="acciones">
                             <mat-header-cell *matHeaderCellDef>
                               Acciones
                             </mat-header-cell>
                             <mat-cell *matCellDef="let element">
-                                <button mat-icon-button color="warn" matTooltip="Actualizar Operador" >
+                                <button mat-icon-button color="warn" matTooltip="" >
                                     <mat-icon fontSet="fas" [fontIcon]="'fa-arrow-alt-circle-right'"></mat-icon>
                                   </button>
                             </mat-cell>
                           </ng-container>
-  
+
                           <mat-header-row
                             *matHeaderRowDef="dcOperador"
                           ></mat-header-row>
@@ -163,14 +163,22 @@
                           ></mat-row>
                         </mat-table>
                       </div>
-  
-                    
+
+
                       <mat-paginator
                         #paginatorOperador
                         pageSize="8"
                         [length]="lengthOperador"
                         showFirstLastButtons
                       ></mat-paginator>
+
+                      <div class="d-flex justify-content-end">
+                        <button mat-raised-button color="accent" (click)="registrarOperador()">
+                          Nuevo Operador
+                        </button>
+                      </div>
+
+
                     </mat-card-content>
                   </mat-card>
                 </div>

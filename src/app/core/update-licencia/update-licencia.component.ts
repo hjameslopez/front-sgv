@@ -7,6 +7,7 @@ import { WebexService } from 'src/app/services/webex.service';
 import { environment } from 'src/environments/environment';
 import { AtencionLicenciaComponent } from './atencion-licencia/atencion-licencia.component';
 import { ResponseOperador } from 'src/app/dto/responseOperador.dto';
+import { NuevoOperadorComponent } from './nuevo-operador/nuevo-operador.component';
 
 @Component({
   selector: 'app-update-licencia',
@@ -24,7 +25,7 @@ import { ResponseOperador } from 'src/app/dto/responseOperador.dto';
   ],
 })
 export class UpdateLicenciaComponent implements OnInit {
-  
+
   licencias: ResponseLicencia[];
   operadores: ResponseOperador[];
   selectedRowIndex:any;
@@ -47,7 +48,7 @@ export class UpdateLicenciaComponent implements OnInit {
     private configService: ConfigService,
     private webexService: WebexService,
     public dialog: MatDialog
-  ) { 
+  ) {
     this.configService._obsVolver.next(true);
     this.listarLicencias();
     this.listarOperadores();
@@ -113,6 +114,31 @@ export class UpdateLicenciaComponent implements OnInit {
       this.listarLicencias();
     });
 
+  }
+
+  registrarOperador(){
+    const dialogRef = this.dialog.open(NuevoOperadorComponent, {
+      data: { },
+      disableClose: true,
+      width:"40em",
+      height:"auto"
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result)
+      if(result!.sLogin){
+        let nuevoObjeto : ResponseOperador;
+        nuevoObjeto  = new ResponseOperador();
+        nuevoObjeto.sLogin = result.sLogin;
+        nuevoObjeto.sNombre = result.sNombre;
+        nuevoObjeto.nIdOperador = result.nIdOperador;
+        console.log(this.operadores)
+        this.operadores.push(nuevoObjeto);
+        this.dsOperador = new MatTableDataSource<ResponseOperador>(this.operadores);
+        this.dsOperador.paginator = this.paginatorOperador
+        this.dsOperador.sort = this.sortOperador
+      }
+
+    });
   }
 
 }

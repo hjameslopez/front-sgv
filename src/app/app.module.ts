@@ -46,6 +46,7 @@ import { UpdateLicenciaComponent } from './core/update-licencia/update-licencia.
 import { AtencionLicenciaComponent } from './core/update-licencia/atencion-licencia/atencion-licencia.component';
 import { AtencionOperadorComponent } from './core/update-licencia/atencion-operador/atencion-operador.component';
 import { NgxTimerModule } from 'ngx-timer';
+import { NuevoOperadorComponent } from './core/update-licencia/nuevo-operador/nuevo-operador.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -70,12 +71,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReportesComponent,
     UpdateLicenciaComponent,
     AtencionLicenciaComponent,
-    AtencionOperadorComponent
+    AtencionOperadorComponent,
+    NuevoOperadorComponent
   ],
   entryComponents: [
     LoginModalComponent,
     AlertComponent,
-    AtencionVideollamadasComponent
+    AtencionVideollamadasComponent,
+    NuevoOperadorComponent
   ],
   imports: [
     BrowserModule,

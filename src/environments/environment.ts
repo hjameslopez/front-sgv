@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  
+
   URL_SVC_SEG: 'http://172.27.230.29:8080/sim-seguridad',
   URL_SVC_MST: 'http://172.27.230.29:8080/scm-maestros',
-  URL_SVC_RIM: 'http://172.27.50.30:8080/back-sgv',
-  
+  URL_SVC_RIM: 'http://localhost:8080/back-sgv',
+
 
 //cambios
-  //URL_SVC_SEG: 'https://das-calidad-01.migraciones.gob.pe/sim-seguridad',
+//  URL_SVC_SEG: 'https://das-calidad-01.migraciones.gob.pe/sim-seguridad',
   //URL_SVC_MST: 'https://das-calidad-01.migraciones.gob.pe/scm-maestros',
 //cambios
 
@@ -24,7 +24,7 @@ export const environment = {
   //URL_SVC_MST: 'http://172.27.230.29:8080/scm-maestros',
   //URL_SVC_RIM: 'https://apps.migraciones.gob.pe/back-sgv',
   //URL_SVC_RIM: 'http:///das-calidad-01.migraciones.gob.pe/back-sgv',
-  
+
 
   jwtDomainsTokenized: [
     'localhost',

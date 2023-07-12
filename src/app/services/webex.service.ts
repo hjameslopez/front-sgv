@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Resultado} from '../models/resultado.model';
 import { ResponseColaWebexDto } from '../dto/responseColaWebex.dto';
 import { Observable } from 'rxjs';
+import { ResponseOperador } from '../dto/responseOperador.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +37,11 @@ export class WebexService {
   getCancelarTurno(pid: number) {
     return this.http.get<Resultado>(`${this.url}/cancelarturno?pid=${pid}`);
   }
-  
+
   getColaEstados(bActivo: number) {
     return this.http.get<any>(`${this.url}/videollamadas-cola?bActivo=${bActivo}`);
   }
-  
+
   getValidaOperador(nIdSimVideCola: number) {
     return this.http.get<any>(`${this.url}/videollamadas-cola-operador?nIdSimVideCola=${nIdSimVideCola}`);
   }
@@ -81,6 +82,10 @@ export class WebexService {
   extraerEstado(codigoTicket: string) {
     return this.http.get<any>(`${this.url}/extraerEstado?scodticket=${codigoTicket}`);
   }
-  
-
+  verificarNuevoOperador(sLogin: string) {
+    return this.http.get<any>(`${this.url}/verificaNuevoOperador?sLogin=${sLogin}`);
+  }
+  registrarOperador(obj:ResponseOperador): Observable<any>{
+    return this.http.post<any>(`${this.url}/registrar-operador`,obj);
+  }
 }
