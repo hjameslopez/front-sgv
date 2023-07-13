@@ -89,7 +89,7 @@ export class UpdateLicenciaComponent implements OnInit {
     console.log(row)
     this.selectedRowIndex=row.nIdSimVideCola;
     const dialogRef = this.dialog.open(AtencionLicenciaComponent, {
-      data: { title: "Actualizar", operador: row },
+      data: { title: "Actualizar Licencia", operador: row },
       disableClose: true,
       width:"40em",
       height:"auto"

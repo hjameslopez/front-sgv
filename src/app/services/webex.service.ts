@@ -88,4 +88,7 @@ export class WebexService {
   registrarOperador(obj:ResponseOperador): Observable<any>{
     return this.http.post<any>(`${this.url}/registrar-operador`,obj);
   }
+  listarCbxOperadores() {
+    return this.http.get<any>(`${this.url}/cbx-operadores`);
+  }
 }

@@ -1,58 +1,52 @@
 <div id="dialogNuevo" fxLayout="column" class="dialog-content-wrapper" style="padding: 0px; max-height: 100vh;">
-    <mat-toolbar fxLayout="row" matDialogTitle class="mat-primary m-0" style="margin-bottom: 0px;">
-      <mat-toolbar-row  fxLayoutAlign="space-between center">
-        <span class="title dialog-title">{{ titulo }}</span>
-        <button mat-icon-button (click)="cerrar()" aria-label="Close dialog">
-          <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
-        </button>
+  <mat-toolbar fxLayout="row" matDialogTitle class="mat-primary m-0" style="margin-bottom: 0px;">
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+      <span class="title dialog-title">{{ titulo }}</span>
+      <button mat-icon-button (click)="cerrar()" aria-label="Close dialog">
+        <mat-icon fontSet="fas" fontIcon="fa-times"></mat-icon>
+      </button>
     </mat-toolbar-row>
-        
-      </mat-toolbar>
-      <mat-card>
-        <div class="col-md-auto">
-          <!--
-          <table class="table" *ngIf="operador">
-            <tr>
-              <th class="">N°:</th>
-              <td>{{ operador.nIdLicencia }}</td>
-            </tr>
-            <tr>
-              <th class="">Licencia:</th>
-              <td>{{ operador.sLicencia }}</td>
-            </tr>
-            <tr>
-              <th class="">Nombre:</th>
-              <td>{{ operador.sNombre }}</td>
-            </tr>
-          </table>
-          -->
-        <form [formGroup]="operador">
 
-          <mat-grid-list cols="1" rowHeight="80px">
-
-            <mat-grid-tile>
-              <mat-form-field appearance="outline">
-                <mat-label>Login</mat-label>
-                <input matInput placeholder="Placeholder">
-                
-              </mat-form-field>
-            </mat-grid-tile>
-
-            <mat-grid-tile></mat-grid-tile>
-            <mat-grid-tile></mat-grid-tile>
-            <mat-grid-tile></mat-grid-tile>
-          </mat-grid-list>
-        </form>
-            
-          
+  </mat-toolbar>
+  <mat-card>
+    <form [formGroup]="form">
+      <div fxLayout="row">
+        <div style="width: 100% !important;" fxLayout="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Licencia</mat-label>
+            <input matInput formControlName="sLicencia" class="text-uppercase" placeholder="Ingrese un usuario" minlength="1" autocomplete="off" [readonly]="true">
+            <mat-error *ngIf="form.get('sLicencia').hasError('required')">Licencia requerida</mat-error>
+          </mat-form-field>
         </div>
-  
-        <mat-card-actions class="d-flex justify-content-end mt-1">
-                    
-          <button mat-raised-button color="accent" (click)="actualizaLicencia()">ACTUALIZAR</button>
-          
-          
-        </mat-card-actions>
-      </mat-card>
-    
-  </div>
+      </div>
+      <div fxLayout="row">
+        <div style="width: 100% !important;" fxLayout="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="sPassword" class="text-uppercase" placeholder="Ingrese un usuario" minlength="1" autocomplete="off">
+            <mat-error *ngIf="form.get('sPassword').hasError('required')">Licencia requerida</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Operador</mat-label>
+          <mat-select formControlName="sOperador" required>
+            <mat-option value="0">SIN OPERADOR</mat-option>
+            <mat-option *ngFor="let licencia of listaOperadores" [value]="licencia.sLogin">
+              {{licencia.sNombre | uppercase}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </form>
+    <mat-card-actions class="d-flex justify-content-end mt-1">
+
+      <button mat-raised-button color="accent" (click)="actualizaLicencia()">ACTUALIZAR</button>
+
+
+    </mat-card-actions>
+  </mat-card>
+
+</div>
