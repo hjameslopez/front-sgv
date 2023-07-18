@@ -46,7 +46,10 @@
                               Operador Asignado
                             </mat-header-cell>
                             <mat-cell *matCellDef="let element">
-                              {{ element.sNombre }}
+
+                              <label *ngIf="element.sNombre != 'Sin Operador'">{{ element.sNombre }}</label>
+                              <label *ngIf="element.sNombre === 'Sin Operador'" style="color: #c11212;">{{element.sNombre }}</label>
+
                             </mat-cell>
                           </ng-container>
 

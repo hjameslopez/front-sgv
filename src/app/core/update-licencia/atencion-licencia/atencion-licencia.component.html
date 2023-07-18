@@ -31,11 +31,14 @@
       <div fxLayout="row">
         <mat-form-field appearance="outline">
           <mat-label>Operador</mat-label>
-          <mat-select formControlName="sOperador" required>
-            <mat-option value="0">SIN OPERADOR</mat-option>
-            <mat-option *ngFor="let licencia of listaOperadores" [value]="licencia.sLogin">
+          <mat-select formControlName="sOperador" required (selectionChange)="select()">
+
+            <mat-option *ngFor="let licencia of listaOperadores" [value]="licencia" >
               {{licencia.sNombre | uppercase}}
             </mat-option>
+            <!--
+            <mat-option value=-1>SIN OPERADOR</mat-option>-->
+
           </mat-select>
         </mat-form-field>
       </div>

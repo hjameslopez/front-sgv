@@ -65,6 +65,11 @@ export class UpdateLicenciaComponent implements OnInit {
   listarLicencias() {
     this.webexService.listarLicenciasFiltro().subscribe(data => {
       this.licencias = data;
+      this.licencias.forEach(element => {
+        if(!element.sNombre)
+          element.sNombre = 'Sin Operador'
+      });
+
       console.log(this.licencias);
       this.dsLicencia = new MatTableDataSource<ResponseLicencia>(this.licencias);
       this.dsLicencia.paginator = this.paginatorLicencia;
@@ -96,7 +101,14 @@ export class UpdateLicenciaComponent implements OnInit {
 
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.listarLicencias();
+      //this.listarLicencias();
+      console.log(result)
+      if(result){
+        row.sLogin = result.sLogin
+        row.sNombre = result.sNombre
+        row.sLicencia = result.sLicencia
+        this.listarLicencias();
+      }
     });
 
   }
@@ -139,6 +151,12 @@ export class UpdateLicenciaComponent implements OnInit {
       }
 
     });
+  }
+
+  actualizaLicencia(){
+
+
+
   }
 
 }

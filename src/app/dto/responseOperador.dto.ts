@@ -4,4 +4,5 @@ export class ResponseOperador {
   dFecCreado: string;
   sNombre: string;
   bActivo: string;
+  sLicencia: string;
 }

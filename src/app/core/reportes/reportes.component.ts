@@ -88,7 +88,7 @@ export class ReportesComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private webexService: WebexService
-  ) { 
+  ) {
     this.configService._obsVolver.next(true);
   }
 
@@ -141,6 +141,7 @@ export class ReportesComponent implements OnInit {
             element.dFecCreadoAMPM = this.FormatoFecha(element.dFecCreado)
             element.nEdad = this.calcularEdad(element.nEdad).toString()
 
+            /*
             if(element.sOpeAsignado=="migraperuconf02@migraciones.gob.pe"){element.sOpeAsignado="Valeria Valderrama"}
             if(element.sOpeAsignado=="migraperuconf03@migraciones.gob.pe"){element.sOpeAsignado="Diana Rojas"}
             if(element.sOpeAsignado=="migraperuconf04@migraciones.gob.pe"){element.sOpeAsignado="Erick Villanueva"}
@@ -163,7 +164,7 @@ export class ReportesComponent implements OnInit {
             if(element.sOpeAsignado=="migraperuconf20@migraciones.gob.pe"){element.sOpeAsignado="Patricia Canani"}
             if(element.sOpeAsignado=="migraperuconf21@migraciones.gob.pe"){element.sOpeAsignado="Mirtha Benavente"}
             if(element.sOpeAsignado=="migraperuconf22@migraciones.gob.pe"){element.sOpeAsignado="Erick Fernandez"}
-            if(element.sOpeAsignado=="migraperuconf22@migraciones.gob.pe"){element.sOpeAsignado="Erick Fernandez"}
+            if(element.sOpeAsignado=="migraperuconf22@migraciones.gob.pe"){element.sOpeAsignado="Erick Fernandez"}*/
 
           });
         }
@@ -217,11 +218,11 @@ export class ReportesComponent implements OnInit {
     var cumpleanos = new Date(fecNac);
     var edad = hoy.getFullYear() - cumpleanos.getFullYear();
     var m = hoy.getMonth() - cumpleanos.getMonth();
-  
+
     if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
         edad--;
     }
-  
+
     return edad;
   }
   getReportVideollamadasXLSX(){
@@ -309,7 +310,7 @@ export class ReportesComponent implements OnInit {
     let sfechaFinal = this.form.controls.sFechaFinalVideollamadas.value ? formatDate(this.form.controls.sFechaFinalVideollamadas.value, 'yyyy-MM-dd', 'EN') : '';
 
 
-    
+
     worksheet.getCell('B1:D2').value = 'REPORTE';
     worksheet.getCell('B4:C4').value = 'LICENCIA';
     worksheet.getCell('D4').value = sOpeAsignado;
@@ -378,7 +379,7 @@ export class ReportesComponent implements OnInit {
       pattern: "solid",
       fgColor: { argb: "ff1f497d" }
     };
-    
+
     worksheet.getCell('B6').font = { bold: true,
       color: {  argb : 'ffffffff'  }};
     worksheet.getCell('C6').fill = {
@@ -395,7 +396,7 @@ export class ReportesComponent implements OnInit {
       fgColor: { argb: "ff1f497d" },
       bgColor:{argb: "ffffffff"}
     };
-    
+
     worksheet.getCell('D6').font = { bold: true,
       color: {  argb : 'ffffffff'  } };
     worksheet.getCell('E6').fill = {
@@ -436,13 +437,13 @@ export class ReportesComponent implements OnInit {
       bottom: {style:'thin'},
       right: {style:'thin'}
     };
-    
+
     let index = 0;
     this.responseCola.forEach(element => {
       index ++;
       const fila = [
         '',
-        index, 
+        index,
         element.sCodTicket != null ? element.sCodTicket : '',
         element.sNombres != null ? element.sNombres : '',
         element.nEdad != null ? element.nEdad : '',
@@ -488,7 +489,7 @@ export class ReportesComponent implements OnInit {
       }
 
     });
-    
+
 
     workbook.xlsx.writeBuffer()
       .then((data) => {
@@ -500,6 +501,6 @@ export class ReportesComponent implements OnInit {
 
   }
 
-  
+
 
 }

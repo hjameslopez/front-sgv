@@ -91,4 +91,15 @@ export class WebexService {
   listarCbxOperadores() {
     return this.http.get<any>(`${this.url}/cbx-operadores`);
   }
+  updateLicencia(obj:ResponseOperador) {
+    return this.http.put<any>(`${this.url}/update-licencia`,obj);
+  }
+  updateOperador(obj:ResponseOperador) {
+    return this.http.put<any>(`${this.url}/update-operador`,obj);
+  }
+
+  updateLicOpe(obj:any) {
+    return this.http.post<any>(`${this.url}/update-lic-ope`,obj);
+  }
+
 }
